@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.UserDao">
+	<!-- 登录密码验证 -->
+	<select id="findUser" parameterType="String" resultType="com.itheima.po.Users">
+		select *
+		from user_log
+		where id = #{id}
+		and password = #{password}
+		and is_enable =
+		'1'
+	</select>
+	<!-- 获取用户基本属性——student -->
+	<select id="findStudentCustomer" parameterType="String"
+		resultType="com.itheima.po.StudentCustomer">
+		select *
+		from user_message_student
+		where student_id = #{student_id}
+	</select>
+	<!-- 获取用户基本属性——teacher -->
+	<select id="findTeacherCustomer" parameterType="String"
+		resultType="com.itheima.po.TeacherCustomer">
+		select *
+		from user_message_teacher
+		where teacher_id = #{teacher_id}
+	</select>
+	<!-- 获取所有lesson -->
+	<select id="findalllessons" resultType="com.itheima.po.Lesson">
+		select *
+		from lesson
+	</select>
+	<!-- 查看某个lesson -->
+	<select id="showlesson" parameterType="String" resultType="com.itheima.po.Lesson">
+		select *
+		from lesson
+		where lesson_id = #{lesson_id}
+	</select>
+	<select id="lessonListCount" resultType="Integer">
+		select count(*)
+		from lesson
+	</select>
+	<!-- student选择课程 -->
+	<update id="choselesson">
+		update user_message_student
+		<set>
+			lesson_id=#{lesson_id}
+		</set>
+		where student_id =#{student_id}
+	</update>
+	<update id="lessonchange" parameterType="String">
+		update lesson
+		<set>
+			students_number = students_number + 1
+		</set>
+		where lesson_id=#{lesson_id}
+	</update>
+	<!-- student提交作业修改file -->
+	<update id="changedesign_files" parameterType="String">
+		update user_message_student
+		<set>
+			design_files=#{design_files}
+		</set>
+		where student_id=#{student_id}
+	</update>
+	<!-- 创建课程 -->
+	<insert id="createlesson" parameterType="com.itheima.po.Lesson">
+		insert into lesson(
+			lesson_id,
+			teacher_id,
+			lesson_name,
+			students_max_number,
+			students_number,
+			lesson_properties,
+			lesson_objective,
+			lesson_details,
+			is_insocial
+		)values(#{lesson_id},
+				#{teacher_id},
+				#{lesson_name},
+				#{students_max_number},
+				#{students_number},
+				#{lesson_properties},
+				#{lesson_objective},
+				#{lesson_details},
+				#{is_insocial}
+		)
+	</insert>
+	<update id="teacherlessonchange" parameterType="String">
+		update user_message_teacher
+		<set>
+			lesson_id=#{lesson_id}
+		</set>
+		where teacher_id =#{teacher_id}
+	</update>
+	<!-- 添加学生 -->
+	<update id="addstudent"   parameterType="String">
+		update user_message_student
+		<set>
+			lesson_id=#{lesson_id}
+		</set>
+		where student_id =#{student_id}
+	</update>
+	<!-- 查找作业单-->
+	<select id="findallStudentwork" parameterType="String" resultType="com.itheima.po.StudentCustomer">
+		select *
+		from user_message_student
+		where lesson_id=#{lesson_id}
+	</select>
+	<!-- 查找design——files -->
+	<select id="getfile"  parameterType="String" resultType="String">
+		select design_files
+		from user_message_student
+		where student_id=#{student_id}
+	</select>
+	<insert id="addUser">
+		insert into user_log(
+			username,
+			id,
+			password,
+			is_enable,
+			user_level
+		)values(#(username),
+				#{id},
+				#{password},
+				#(is_enable)
+				#{user_level}
+		)
+	</insert>
+	<!-- 账户锁定 -->
+	<update id="change_is_enable_false">
+		update user_log
+		<set>
+			is_enable=0
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 账户解锁 -->
+	<update id="change_is_enable_true">
+		update user_log
+		<set>
+			is_enable=1
+		</set>
+		where id = #{id}
+	</update>
+</mapper>
