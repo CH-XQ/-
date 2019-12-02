@@ -24,18 +24,15 @@
 <body>
 
 	<div>
-		<h1>创建毕业设计</h1>
+		<h1>创建考试</h1>
 		<form
 			action="${pageContext.request.contextPath }/confirmlesson.action"
 			method="post">
-			课题id：<input id="lesson_id" type="text" name="lesson_id" /><br /> 
+			考试id：<input id="lesson_id" type="text" name="lesson_id" /><br /> 
 			课程名称：<input id="lesson_name" type="text" name="lesson_name" /><br /> 
 			最大学生数量：<input id="students_max_number" type="text" name="students_max_number" /><br /> 
 			初始学生数量：<input id="students_number" type="text" name="students_number" /><br /> 
-			课题性质：<input id="lesson_properties" type="text" name="lesson_properties" /><br /> 
-			课题目的：<input id="lesson_objective" type="text" name="lesson_objective" /><br /> 
-			详细描述：<input id="lesson_details" type="text" name="lesson_details" /><br /> 
-			社会性：<input id="is_insocial" type="text" name="is_insocial" /><br />  
+			
 			<center>
 				<input type="submit" value="创建" />
 			</center>

@@ -53,29 +53,25 @@
 					<th>学生编号</th>
 					<th>手机号</th>
 					<th>姓名</th>
-					<th>教师id</th>
-					<th>课题id</th>
+					
 				</tr>
 				<tr>
 					<th>${USER_SESSION.student_id }</th>
 					<th>${USER_SESSION.phone }</th>
 					<th>${USER_SESSION.real_name }</th>
-					<th>${USER_SESSION.lesson_teacher }</th>
-					<th>${USER_SESSION.lesson_id }</th>
+					
 				</tr>
 			</table>
 			<font color="red"> <span id="message">${msg}</span>
 			</font>
 			<c:choose>
 				<c:when test="${USER_SESSION.lesson_id == 0}">
-					<a href="${pageContext.request.contextPath }/showlesson.action">选择毕业设计</a>
+					<a href="${pageContext.request.contextPath }/showlesson.action">选择考试</a>
 				</c:when>
 				<c:when test="${USER_SESSION.lesson_id == NULL}">
-					<a href="${pageContext.request.contextPath }/showlesson.action">选择毕业设计</a>
+					<a href="${pageContext.request.contextPath }/showlesson.action">选择考试</a>
 				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath }/uploadlesson.action">查看和提交毕业设计</a>
-				</c:otherwise>
+				
 			</c:choose>
 
 		</c:when>
@@ -88,26 +84,26 @@
 					<th>教师id</th>
 					<th>手机号</th>
 					<th>姓名</th>
-					<th>课题id</th>
+					
 				</tr>
 				<tr>
 					<th>${USER_SESSION.teacher_id }</th>
 					<th>${USER_SESSION.phone }</th>
 					<th>${USER_SESSION.real_name }</th>
-					<th>${USER_SESSION.lesson_id }</th>
+					
 				</tr>
 			</table>
 			<font color="red"> <span id="message">${msg}</span>
 			</font>
 			<c:choose>
 				<c:when test="${USER_SESSION.lesson_id == 0}">
-					<a href="${pageContext.request.contextPath }/createlesson.action">创建毕业设计</a>
+					<a href="${pageContext.request.contextPath }/createlesson.action">创建考试</a>
 				</c:when>
 				<c:when test="${USER_SESSION.lesson_id == NULL}">
-					<a href="${pageContext.request.contextPath }/createlesson.action">创建毕业设计</a>
+					<a href="${pageContext.request.contextPath }/createlesson.action">创建考试</a>
 				</c:when>
 				<c:otherwise>
-					<a href="${pageContext.request.contextPath }/checklesson.action">查看毕业设计</a>
+					<a href="${pageContext.request.contextPath }/checklesson.action">查看考试</a>
 				</c:otherwise>
 			</c:choose>
 		</c:when>

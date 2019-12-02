@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.UserDao">
+
+	<!-- 登录密码验证 -->
+	<select id="findUser" parameterType="String" resultType="com.itheima.po.Users">
+		select *
+		from login
+		where id = #{id}
+		and password = #{password}
+	</select>
+	
+	<!-- 获取用户基本属性——student -->
+	<select id="findStudentCustomer" parameterType="String"
+		resultType="com.itheima.po.StudentCustomer">
+		select *
+		from student
+		where id = #{id}
+	</select>
+	
+	<!-- 获取用户基本属性——teacher -->
+	<select id="findTeacherCustomer" parameterType="String"
+		resultType="com.itheima.po.TeacherCustomer">
+		select *
+		from teacher
+		where id = #{id}
+	</select>
+	
+	<!-- 获取用户基本属性——office -->
+	<select id="findOfficeCustomer" parameterType="String"
+		resultType="com.itheima.po.OfficeCustomer">
+		select *
+		from office
+		where id = #{id}
+	</select>
+	
+	<!-- 获取用户基本属性——admin -->
+	<select id="findadminCustomer" parameterType="String"
+		resultType="com.itheima.po.admin">
+		select *
+		from admin
+		where id = #{name}
+	</select>
+	
+	<!-- 获取所有test -->
+	<select id="findpublictest" resultType="com.itheima.po.Test">
+		select name,teacher
+		from test 
+		where ispublic = 1
+		and count > 0
+	</select>
+	
+	<!-- 教师创建test -->
+	<insert id="createtest" parameterType="com.itheima.po.Test">
+		insert into test(
+			name,
+			time,
+			teacher
+			classroom,
+			ispublic
+		)values(#{name},
+				#{time},
+				#{teacher}
+				#{classroom},
+				#{ispublic}
+		)
+	</insert>
+</mapper>

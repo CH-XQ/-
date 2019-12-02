@@ -28,16 +28,16 @@
 <body>
 
 	<div>
-		<h1>毕业设计选择</h1>
+		<h1>考试选择</h1>
 	</div>
 	<font color="red">
 							<span id="message">${msg}</span>
 						</font>
 	<form action="${pageContext.request.contextPath }/choselesson.action" method="post">
-		<div>课题列表</div>
+		<div>考试列表</div>
 		<table>
 			<tr>
-				<th>课题编号（点击查看）</th>
+				<th>考试编号（点击查看）</th>
 				<th>教师id</th>
 				<th>课题名称</th>
 				<th>人数</th>

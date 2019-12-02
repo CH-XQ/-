@@ -34,15 +34,12 @@
 				<td colspan=9 align="center"><h3>基础信息</h3></td>
 			</tr>
 			<tr>
-				<th>课题id</th>
+				<th>考试id</th>
 				<th>教师id</th>
-				<th>课程名称</th>
+				<th>考试名称</th>
 				<th>可选人数</th>
 				<th>已选人数</th>
-				<th>课程性质</th>
-				<th>课程目的</th>
-				<th>细节</th>
-				<th>社会形</th>
+				
 			</tr>
 			<tr>
 				<th>${LESSON.lesson_id }</th>
@@ -50,10 +47,7 @@
 				<th>${LESSON.lesson_name }</th>
 				<th>${LESSON.students_max_number }</th>
 				<th>${LESSON.students_number }</th>
-				<th>${LESSON.lesson_properties }</th>
-				<th>${LESSON.lesson_objective }</th>
-				<th>${LESSON.lesson_details }</th>
-				<th>${LESSON.is_insocial }</th>
+				
 			</tr>
 		</table>
 		<input id="lesson_id" type="submit"  name="lesson_id" value="${LESSON.lesson_id}"/>

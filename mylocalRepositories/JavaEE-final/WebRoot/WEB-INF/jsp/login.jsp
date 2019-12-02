@@ -34,7 +34,7 @@
 					<fieldset style="width:auto; margin:0px auto;">
 						<legend>
 							<font style="font-size:15px" face="宋体">
-								欢迎使用毕业设计管理系统
+								欢迎使用考试管理系统
 							</font>
 						</legend>
 						<font color="red">
